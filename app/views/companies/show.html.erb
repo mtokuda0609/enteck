@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>商品一覧</h3>
+    <%= render 'items/items', items: @items %>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="table-responsive">
+      <h3>会社基本情報</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>会社名</th>
+          <td><%= @company.company_name %></td>
+        </tr>
+        <tr>
+          <th>代表者名</th>
+          <td><%= @company.representative %></td>
+        </tr>
+        <tr>
+          <th>資本金</th>
+          <td><%= @company.capital %></td>
+        </tr>
+        <tr>
+          <th>売上</th>
+          <td><%= @company.sales %></td>
+        </tr>
+        <tr>
+          <th>従業員数</th>
+          <td><%= @company.employee %></td>
+        </tr>
+        <tr>
+          <th>国</th>
+          <td><%= @company.country %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @company.zip %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @company.company_name %></td>
+        </tr>
+        <tr>
+          <th>代表電話</th>
+          <td><%= @company.state %><%= @company.city %><%= @company.other_address %></td>
+        </tr>
+        <tr>
+          <th>URL</th>
+          <td><a href="<%= @company.url %>", target="_blank"><%= @company.url %></a></td>
+        </tr>
+      </table>
+      
+      <h3>事業情報</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>事業内容</th>
+          <td><%= @company.business_content %></td>
+        </tr>
+        <tr>
+          <th>主な製品・サービス</th>
+          <td><%= @company.main_item %></td>
+        </tr>
+        <tr>
+          <th>アピールポイント</th>
+          <td><%= @company.appeal_point %></td>
+        </tr>
+        <tr>
+          <th>評価</th>
+          <td><%= @company.evaluation %></td>
+        </tr>
+        <tr>
+          <th>与信認定</th>
+          <td><%= @company.credit_check_flag %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@item) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "商品名*" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :explanation, "商品説明" %>
+        <%= f.text_area :explanation, class: "form-control", rows: "5" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :unit_price, "価格*" %>
+        <%= f.number_field :unit_price, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :amount_unit, "通貨*" %>
+        <%= f.select :amount_unit,
+            [
+              ["JPY", "JPY"],
+              ["USD", "USD"],
+              ["EUR", "EUR"],
+              ["GBP", "GBP"],
+              ["AUD", "AUD"],
+              ["NZD", "NZD"],
+              ["CAD", "CAD"],
+              ["CHF", "CHF"],
+              ["HKD", "HKD"],
+              ["SGD", "SGD"],
+              ["CNY", "CNY"],
+              ["IND", "IND"],
+              ["Other", "Other"]
+            ], class: "form-control", :include_blank => true, id: "state"
+          %>
+      </div>
+      <div class="form-group">
+        <%= f.label :minimum_lot, "最小発注数量*" %>
+        <%= f.number_field :minimum_lot, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :unit, "数量単位*" %>
+        <%= f.select :unit,
+            [
+              ["PC(個)", "PC(個)"],
+              ["SHT(枚)", "SHT(枚)"],
+              ["ROL(本)", "ROL(本)"],
+              ["SET", "SET"],
+              ["M", "M"],
+              ["MM", "MM"],
+              ["KG", "KG"],
+              ["G", "G"],
+              ["MG", "MG"],
+              ["L", "L"],
+              ["ML", "ML"],
+              ["M2", "M2"],
+              ["CM2", "CM2"],
+              ["MM2", "MM2"],
+              ["Other", "Other"]
+            ], class: "form-control", id: "state"
+          %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pics, "写真イメージ*" %>
+        <%= f.file_field :pics %>
+      </div>
+      
+      <%= f.submit @item.new_record? ? "登録" : "更新", class: "btn btn-primary btn-blocked" %>
+      
+    <% end %>
+  </div>
+</div>

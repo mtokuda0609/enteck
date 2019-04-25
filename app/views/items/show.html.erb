@@ -1,0 +1,38 @@
+<h1>商品詳細</h1>
+
+<div class="row">
+  <div class="media col-md-6" id="img-main-box">
+    <%= image_tag @item.pics.url, id: "img-main" %>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center" id="show-table-title">商品名</th>
+        <td class="text-left"><%= @item.name %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">商品説明</th>
+        <td class="text-left"><%= @item.explanation %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">値段</th>
+        <td class="text-right"><%= @item.unit_price %> <%= @item.amount_unit %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">最小発注数</th>
+        <td class="text-right"><%= @item.minimum_lot %> <%= @item.unit %></td>
+      </tr>
+    </table>
+    
+    <% if @item.company_id == current_user.id %>
+      <div class="row">
+        <%= link_to "編集", edit_item_path, class: "btn btn-warning btn-block" %>
+        <%= link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger btn-block" %>
+      </div>
+    <% else %>
+      <div class-"row">
+        <%= render 'purchases/purchase_button', item: @item %>
+      </div>
+    <% end %>
+  </div>
+</div>

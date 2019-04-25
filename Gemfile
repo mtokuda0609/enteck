@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -56,3 +56,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #新規追加
 gem 'kaminari'
 gem 'pry-byebug', group: :development
+
+#郵便番号
+gem 'jp_prefecture'
+gem 'jquery-rails'
+
+#国選択
+gem 'country_select', require: 'country_select_without_sort_alphabetical'
+
+#画像アップロード
+gem 'carrierwave'
+gem 'rmagick'

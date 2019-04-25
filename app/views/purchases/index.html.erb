@@ -1,0 +1,7 @@
+<h1>購入履歴</h1>
+<div class="row">
+  <% @purchases.each do |purchase| %>
+    <%= purchase.price %>
+    <%= purchase.quantity %>
+  <% end %>
+</div>

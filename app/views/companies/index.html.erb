@@ -1,0 +1,29 @@
+<div class="row">
+  <h1>登録企業一覧</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr class="info">
+          <th>会社名</th>
+          <th>国</th>
+          <th>都道府県</th>
+          <th>事業内容</th>
+          <th>主な製品・サービス</th>
+          <th>評価</th>
+          <th>詳細</th>
+        </tr>
+        
+        <% @companies.each do |company| %>
+        <tr>
+          <td><%= company.company_name %></td>
+          <td><%= company.country %></td>
+          <td><%= company.state %></td>
+          <td><%= company.business_content %></td>
+          <td><%= company.main_item %></td>
+          <td><%= company.evaluation %></td>
+          <td class="text-center"><button class="btn btn-default"><%= link_to "詳細", company_path(company) %></button></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  <% paginate @companies %>
+</div>
