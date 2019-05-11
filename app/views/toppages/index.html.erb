@@ -1,4 +1,45 @@
-<div class="row">
-  <p>商品一覧</p>
-  <%= render 'items/items', items: @items %>
-</div>
+<% if logged_in? %>
+  <%= render template: "items/index" %>
+<% else %>
+  <div class="row", id="title">
+    <div class="col-md-12", id="enteck_message_box">
+      <%= image_tag "top_pics1.jpg", :size => '960x500' %>
+      <div id="enteck_message_background">
+        <p>enteck</p>
+        <p>ニッチな会社と会社をつなぐプラットフォーム</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>ToDo</h3>
+      <ul>
+        <li>与信審査のファイルアップロード機能</li>
+        <li>アドミン用Controllerを追加（とだこうきさんページ参照）</li>
+        <li>与信フラグ付けるよう画面</li>
+        <li>物流依頼フラグ</li>
+        <li>物流費見積もり計算機能</li>
+        <li>商品への問い合わせ機能（１：１チャット形式）</li>
+        <li>Javascriptで動きをつける</li>
+        
+        <li>バックエンド(API)とフロントエンドでリポジトリを分ける</li>
+        <li>フロントでは Vue.js や React など、モダンなフレームワークを使う</li>
+        <li>クラウド(AWS or GCP)への自動デプロイ設定</li>
+        <li>Dockerfileでアプリケーションを記述する</li>
+        <li>GithubのIssueで開発項目を管理してみる</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" id="enteck_function_explanation">
+      <p>機能説明</p>
+      <p></p>
+    </div>
+    <div class="col-md-4" id="enteck_function_explanation">
+      <p>機能説明</p>
+    </div>
+    <div class="col-md-4" id="enteck_function_explanation">
+      <p>機能説明</p>
+    </div>
+  </div>
+<% end %>

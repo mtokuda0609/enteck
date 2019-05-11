@@ -1,0 +1,42 @@
+<% item = Item.find(@purchase.item_id) %>
+
+<%= form_for @purchase do |f| %>
+  <table class="table table-bordered table-striped">
+    <h3>購入商品情報</h3>
+    <tr>
+      <th>商品名</th>
+      <td><%= item.name %></td>
+    </tr>
+    <tr>
+      <th>購入数量</th>
+      <td><%= number_with_delimiter(@purchase.quantity) %></td>
+      <%= f.hidden_field :quantity %>
+    </tr>
+    <tr>
+      <th>合計金額</th>
+      <td><%= number_with_delimiter(@purchase.price) %> <%= @item.amount_unit %></td>
+      <%= f.hidden_field :price %>
+    </tr>
+  </table>
+  
+  <h3>お届け先</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>郵便番号</th>
+      <td><%= current_user.zip %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= current_user.state %><%= current_user.city %><%= current_user.other_address %></td>
+    </tr>
+  </table>
+  
+  <%= f.hidden_field :item_id %>
+  
+  <div class="actions">
+    <%= f.submit '商品画面に戻る', name: 'back', class: 'btn btn-success' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '購入する', class: 'btn btn-primary' %>
+  </div>
+<% end %>

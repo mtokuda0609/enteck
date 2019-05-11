@@ -1,4 +1,37 @@
 <h1>購入履歴詳細</h1>
 <div class="row">
-  
+  <div class="media col-md-6" id="img-main-box">
+    <%= image_tag @item.pics.url, id: "img-main" %>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center" id="show-table-title">商品名</th>
+        <td class="text-left"><%= @item.name %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">購入数量</th>
+        <td class="text-right"><%= number_with_delimiter(@purchase.quantity) %> <%= @item.unit %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">購入価格</th>
+        <td class="text-right"><%= number_with_delimiter(@purchase.price) %> <%= @item.amount_unit %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">購入日時</th>
+        <td class="text-left"><%= @purchase.created_at.to_s(:ja) %></td>
+      </tr>
+    </table>
+    
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center" id="show-table-title">販売企業</th>
+        <td class="text-left"><%= link_to "#{@company.company_name}", company_path(@company) %></td>
+      </tr>
+      <tr>
+        <th class="text-center" id="show-table-title">購入商品の説明</th>
+        <td class="text-left"><%= @item.explanation%></td>
+      </tr>
+    </table>
+  </div>
 </div>

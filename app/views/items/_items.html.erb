@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row", id="items">
   <ul class="media-list">
     <% items.each do |item| %>
       <li class="media", id="thumbnail">
         <div id="img-thumbnail-box">
-          <%= link_to image_tag("#{item.pics.thumb.url}"), item_path(item), id: "img-thumbnail" %>
+          <%= link_to image_tag("#{item.pics.thumb250.url}"), item_path(item), id: "img-thumbnail" %>
         </div>
         <div id="text-thumbnail">
           <%= link_to "#{item.name}", item_path(item) %>

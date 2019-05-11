@@ -59,7 +59,6 @@ gem 'pry-byebug', group: :development
 
 #郵便番号
 gem 'jp_prefecture'
-gem 'jquery-rails'
 
 #国選択
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
@@ -67,3 +66,9 @@ gem 'country_select', require: 'country_select_without_sort_alphabetical'
 #画像アップロード
 gem 'carrierwave'
 gem 'rmagick'
+
+#金額カンマ区切り
+gem 'autonumeric-rails'
+
+#jQuery
+gem 'jquery-rails'

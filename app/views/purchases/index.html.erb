@@ -1,7 +1,23 @@
-<h1>購入履歴</h1>
 <div class="row">
-  <% @purchases.each do |purchase| %>
-    <%= purchase.price %>
-    <%= purchase.quantity %>
-  <% end %>
+  <h1>購入履歴</h1>
+</div>
+
+<div class="row">
+  <table class="table table-striped">
+    <tr class="success">
+      <th>商品名</th>
+      <th>購入数量</th>
+      <th>購入金額</th>
+      <th>購入日時</th>
+    </tr>
+    
+    <% @purchases.each do |purchase| %>
+    <tr>
+      <td><%= link_to "#{Item.find(purchase.item_id).name}", purchase_path(purchase) %></td>
+      <td><%= number_with_delimiter(purchase.quantity) %></td>
+      <td><%= number_with_delimiter(purchase.price) %></td>
+      <td><%= purchase.created_at.to_s(:ja) %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

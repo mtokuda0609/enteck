@@ -12,10 +12,27 @@
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="nav navbar-nav">
         <% if logged_in? %>
-          <li><%= link_to "登録会社一覧", companies_path %></li>
-          <li><%= link_to "商品登録", new_item_path %></li>
-          <li><%= link_to "購入履歴", purchases_path %></li>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">購買メニュー <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "購入履歴", purchases_path %></li>
+              <li><%= link_to "登録会社一覧", companies_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">販売メニュー <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "商品登録", new_item_path %></li>
+              <li><%= link_to "売上履歴", sales_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ユーザ情報 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "マイページ", company_path(current_user) %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            </ul>
+          </li>
+          <li>
+            <%= render 'items/search' %>
+          </li>
         <% else %>
           <li><%= link_to "ユーザ登録", new_company_path %></li>
           <li><%= link_to "ログイン", login_path %></li>

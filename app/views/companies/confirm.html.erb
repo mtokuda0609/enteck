@@ -1,0 +1,111 @@
+<% if request.post? == true %>
+  <h1>ユーザ登録確認</h1>
+<% else %>
+  <h1>ユーザ情報編集確認</h1>
+<% end %>
+
+<%= form_for @company do |f| %>
+  <h3>ログイン情報</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>ログイン名</th>
+      <td><%= @company.name %></td>
+      <%= f.hidden_field :name %>
+    </tr>
+    <tr>
+      <th>Eメール</th>
+      <td><%= @company.email %></td>
+      <%= f.hidden_field :email %>
+    </tr>
+    <%= f.hidden_field :password %>
+    <%= f.hidden_field :password_confirmation %>
+  </table>
+  
+  <h3>会社情報</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>会社名</th>
+      <td><%= @company.company_name %></td>
+      <%= f.hidden_field :company_name %>
+    </tr>
+    <tr>
+      <th>代表者名</th>
+      <td><%= @company.representative %></td>
+      <%= f.hidden_field :representative %>
+    </tr>
+    <tr>
+      <th>資本金</th>
+      <td><%= @company.capital %></td>
+      <%= f.hidden_field :capital %>
+    </tr>
+    <tr>
+      <th>売上</th>
+      <td><%= @company.sales %></td>
+      <%= f.hidden_field :sales %>
+    </tr>
+    <tr>
+      <th>従業員数</th>
+      <td><%= @company.employee %></td>
+      <%= f.hidden_field :employee %>
+    </tr>
+    <tr>
+      <th>会社URL</th>
+      <td><%= @company.url %></td>
+      <%= f.hidden_field :url %>
+    </tr>
+    <tr>
+      <th>国</th>
+      <td><%= @company.country %></td>
+      <%= f.hidden_field :country %>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @company.zip %></td>
+      <%= f.hidden_field :zip %>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @company.state %><%= @company.city %><%= @company.other_address %></td>
+      <%= f.hidden_field :state %>
+      <%= f.hidden_field :city %>
+      <%= f.hidden_field :other_address %>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @company.phone_num %></td>
+      <%= f.hidden_field :phone_num %>
+    </tr>
+  </table>
+  
+  <h3>ビジネス情報</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>事業内容</th>
+      <td><%= @company.business_content %></td>
+      <%= f.hidden_field :business_content %>
+    </tr>
+    <tr>
+      <th>主な製品・サービス</th>
+      <td><%= @company.main_item %></td>
+      <%= f.hidden_field :main_item %>
+    </tr>
+    <tr>
+      <th>アピールポイント</th>
+      <td><%= @company.appeal_point %></td>
+      <%= f.hidden_field :appeal_point %>
+    </tr>
+  </table>
+  
+  <% if request.post? == true %>
+    <div style="display:inline-flex">
+      <%= f.submit "登録画面へ戻る", name: 'back', class: "btn btn-success" %>
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    </div>
+  <% else %>
+    <div style="display:inline-flex">
+      <%= f.submit "編集画面へ戻る", name: 'back', class: "btn btn-success" %>
+      <%= f.submit "編集", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  
+<% end %>

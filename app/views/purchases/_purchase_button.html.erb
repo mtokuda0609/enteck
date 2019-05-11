@@ -1,5 +1,5 @@
 <% unless current_user.id == @item.company_id %>
-  <%= form_for(@purchase) do |f| %>
+  <%= form_for @purchase, url: {controller: 'purchases',action: 'confirm'} do |f| %>
     <div class="form-group">
       <%= f.label :quantity, "購入数量*" %>
       <%= f.number_field :quantity, class: "form-control" %>

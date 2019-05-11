@@ -16,7 +16,7 @@
       </tr>
       <tr>
         <th class="text-center" id="show-table-title">値段</th>
-        <td class="text-right"><%= @item.unit_price %> <%= @item.amount_unit %></td>
+        <td class="text-right"><%= number_with_delimiter(@item.unit_price) %> <%= @item.amount_unit %></td>
       </tr>
       <tr>
         <th class="text-center" id="show-table-title">最小発注数</th>
@@ -25,9 +25,9 @@
     </table>
     
     <% if @item.company_id == current_user.id %>
-      <div class="row">
-        <%= link_to "編集", edit_item_path, class: "btn btn-warning btn-block" %>
-        <%= link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger btn-block" %>
+      <div class="row" style="display:inline-flex">
+        <%= link_to "編集", edit_item_path, class: "btn btn-warning" %>
+        <%= link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
       </div>
     <% else %>
       <div class-"row">

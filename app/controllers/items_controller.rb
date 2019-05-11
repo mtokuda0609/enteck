@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
   def index
-    @items = Item.all.page(params[:page])
+    @items = Item.search(params[:search])
   end
   
   def show
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
   
   def create
-    @item = current_user.item.new(item_params)
+    @item = current_user.items.build(item_params)
     if @item.save
       flash[:success] = "商品が登録されました"
       redirect_to @item
@@ -37,12 +37,11 @@ class ItemsController < ApplicationController
       redirect_to @item
     else
       flash[:danger] = "商品情報を更新できませんでした"
-      render :edite
+      render :edit
     end
   end
   
   def destroy
-    #binding.pry
     @item = find_item_by_id
     @item.destroy
     flash[:success] = "商品を削除しました"
@@ -53,7 +52,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :explanation, :price, :amount_unit, :minimum_lot, :unit, :pics)
+    params.require(:item).permit(:name, :explanation, :unit_price, :amount_unit, :minimum_lot, :unit, :pics)
   end
   
   def find_item_by_id

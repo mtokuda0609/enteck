@@ -11,7 +11,7 @@
       </div>
       <div class="form-group">
         <%= f.label :unit_price, "価格*" %>
-        <%= f.number_field :unit_price, class: "form-control" %>
+        <%= f.number_field :unit_price, class: "form-control", data: { autonumeric: true } %>
       </div>
       <div class="form-group">
         <%= f.label :amount_unit, "通貨*" %>
@@ -35,7 +35,7 @@
       </div>
       <div class="form-group">
         <%= f.label :minimum_lot, "最小発注数量*" %>
-        <%= f.number_field :minimum_lot, class: "form-control" %>
+        <%= f.number_field :minimum_lot, class: "form-control", data: { autonumeric: true } %>
       </div>
       <div class="form-group">
         <%= f.label :unit, "数量単位*" %>
@@ -59,10 +59,16 @@
             ], class: "form-control", id: "state"
           %>
       </div>
+      <% binding.pry %>
       <div class="form-group">
         <%= f.label :pics, "写真イメージ*" %>
         <%= f.file_field :pics %>
+        <% if @item.pics.url != nil %>
+          <%= image_tag @item.pics.thumb100.url %>
+        <% end %>
       </div>
+      
+      <%= hidden_field :company_id, value: current_user.id %>
       
       <%= f.submit @item.new_record? ? "登録" : "更新", class: "btn btn-primary btn-blocked" %>
       

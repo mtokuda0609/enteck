@@ -7,11 +7,11 @@
     <%= form_for(:session, url: login_path) do |f| %>
       <div class="form-group">
         <%= f.label :name, "ログイン名" %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, value: "portfolio", class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password, class: "form-control" %>
+        <%= f.password_field :password, value: "portfolio", class: "form-control" %>
       </div>
       
       <%= f.submit "ログイン", class: "btn btn-primary" %>

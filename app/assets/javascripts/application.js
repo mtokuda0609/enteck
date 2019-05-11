@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require autonumeric
+
+
+
+
+$(document).ready(function() {
+  $("#title").hide().fadeIn(2000);
+  $("#items").hide().fadeIn(2000);
+  
+});

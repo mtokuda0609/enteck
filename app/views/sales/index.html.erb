@@ -1,0 +1,42 @@
+<!--変数 -->
+<% sum_sales_price = 0 %>
+<% amount_unit = @items.first.amount_unit %> <!--通貨（将来的には通貨単位に集計 or 購入時にレート計算でユーザ指定通貨で保存）-->
+
+<!--ここから表示部分-->
+<div style="position: relative;">
+  <h1 style="display:inline-block;">売上一覧</h1>
+  <%= link_to "CSV", sales_path(format: :csv), class: "btn btn-primary", id: "csv-btn" %>
+</div>
+
+<div class="row">
+  <table class="table table-striped">
+    <tr class="info">
+      <th>商品名</th>
+      <th>販売数量</th>
+      <th>売上価格</th>
+      <th>販売日時</th>
+      <th>購買者</th>
+    </tr>
+
+    <tr>
+      <% @sales.each do |sale| %>
+        <% item = Item.find(sale.item_id) %>
+        <% vendor = Company.find(sale.company_id) %>
+        <td><%= item.name %></td>
+        <td><%= number_with_delimiter(sale.quantity) %></td>
+        <td><%= number_with_delimiter(sale.price) %></td>
+        <td><%= sale.created_at.to_s(:ja) %></td>
+        <td><%= vendor.company_name %></td>
+    </tr>
+        <% sum_sales_price += sale.price %>  <!--売上合計の計算-->
+      <% end %>
+  </table>
+</div>
+<div>
+  <table class="table table-bordered" id="sum_sales_price">
+    <tr>
+      <th class="info">売上合計</th>
+      <td style="text-align: right;"><%= number_with_delimiter(sum_sales_price) %> <%= amount_unit %></td>
+    </tr>
+  </table>
+</div>
