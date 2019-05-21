@@ -1,0 +1,16 @@
+<!-- 変数 -->
+<% company_id = @relation.company_id %>
+<% company_name = Company.find(company_id).company_name %>
+<% friend_id = @relation.friend_id %>
+<% friend_name = Company.find(friend_id).company_name %>
+
+<!-- ここから表示 -->
+<% if company_id == current_user.id %>
+  <h1><%= friend_name %></h1>
+<% else %>
+  <h1><%= company_name %></h1>
+<% end %>
+
+<div id="chats">
+  <%= render @chats %>
+</div>

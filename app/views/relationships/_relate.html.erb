@@ -1,0 +1,10 @@
+<% unless current_user == @company %>
+  <% if current_user.relate?(@company) %>
+    <%= link_to "この企業との既存チャットへ", relationship_path, class: "btn btn-primary" %>
+  <% else %>
+    <%= form_for(current_user.relationships.build) do |f| %>
+      <%= hidden_field_tag :friend_id, @company.id %>
+      <%= f.submit "この企業と新規チャット", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+<% end %>

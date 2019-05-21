@@ -1,0 +1,24 @@
+<h1>チャットリスト</h1>
+<div class="row", id="relations">
+  <table class="table table-bordered">
+    <tr>
+      <th>企業名</th>
+      <th>最新コメント</th>
+    </tr>
+    <% @relations.each do |relation| %>
+      <% if relation.company_id == current_user.id %>
+        <% friend = Company.find(relation.friend_id) %>
+        <tr>
+          <td><%= link_to friend.company_name, relationship_path(relation) %></td>
+          <td></td>
+        </tr>
+      <% else %>
+        <% friend = Company.find(relation.company_id) %>
+        <tr>
+          <td><%= link_to friend.company_name, relationship_path(relation) %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
